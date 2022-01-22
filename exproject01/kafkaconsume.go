@@ -3,15 +3,13 @@ package kafkaconsume
 import (
 	"encoding/json"
 
+	"geofencing/config"
+	"geofencing/logic/process"
+	"geofencing/models"
+
+	"github.com/confluentinc/confluent-kafka-go/kafka"
+	"github.com/labstack/gommon/log"
 	"honnef.co/go/tools/config"
-	//"honnef.co/go/tools/config"
-	//	"honnef.co/go/tools/config"
-	//	"geofencing/config"
-	//	"geofencing/logic/process"
-	// "geofencing/logic/process"
-	//	"geofencing/models"
-	//	"github.com/confluentinc/confluent-kafka-go/kafka"
-	//"github.com/labstack/gommon/log"
 )
 
 // Consume func
