@@ -1,0 +1,40 @@
+package main
+
+import (
+	"fmt"
+	"github.com/confluentinc/confluent-kafka-go/kafka"
+)
+
+
+func main() {
+	// create a new context
+	//ctx := context.Background()
+	// produce messages in a new go routine, since
+	// both the produce and consume functions are
+	// blocking
+	//go produce(ctx)
+	consume()
+}
+
+func consume() {
+c, err := kafka.NewConsumer(&kafka.ConfigMap{
+		"bootstrap.servers": "10.95.148.163:9092,10.95.148.164:9092,10.95.148.165:9092",
+		"group.id":          "logs",
+		"auto.offset.reset": "smallest" })
+	if err != nil {
+		panic(err)
+	}
+	c.SubscribeTopics([]string{"dmc-ocs"}, nil)
+	retrieved := c.Poll(0)
+	 fmt.Println("received: ", string(retrieved.Value))
+	switch message := retrieved.(type) {
+	case *kafka.Message:
+		//fmt.Printf(string(message.value()))
+		fmt.Printf("%% data : %v\n", message)
+	case kafka.Error:
+		fmt.Printf("%% Error: %v\n", message)
+	default:
+		fmt.Printf("Ignored %v\n", message)
+	}
+}
+
