@@ -2,10 +2,11 @@ package kafkaconsume
 
 import (
 	"encoding/json"
+	//"geofencing/config"
+	//"geofencing/logic/process"
 
-	"geofencing/config"
-	"geofencing/logic/process"
-	"geofencing/models"
+	// "geofencing/logic/process"
+	//"geofencing/models"
 
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 	"github.com/labstack/gommon/log"
@@ -13,15 +14,20 @@ import (
 )
 
 // Consume func
-func Consume() {
+func kafkaconsume() {
 	c, err := kafka.NewConsumer(&kafka.ConfigMap{
-		"bootstrap.servers":       config.Config.KafkaConsumeHost,
-		"group.id":                config.Config.KafkaConsumeGroup,
-		"auto.offset.reset":       config.Config.KafkaConsumeOffsetReset,
-		"sasl.kerberos.principal": config.Config.KafkaConsumePrincipal,
-		"sasl.kerberos.keytab":    config.Config.KafkaConsumeKeytab,
-		"security.protocol":       "sasl_plaintext",
+		"bootstrap.servers": "host1:9092,host2:9092",
+		"group.id":          "foo",
+		"auto.offset.reset": "smallest",
+		//"sasl.kerberos.principal": config.Config.KafkaConsumePrincipal,
+		//"sasl.kerberos.keytab":    config.Config.KafkaConsumeKeytab,
+		//"security.protocol":       "sasl_plaintext",
 	})
+
+	//consumer, err := kafka.NewConsumer(&kafka.ConfigMap{
+	//	"bootstrap.servers":    "host1:9092,host2:9092",
+	//	"group.id":             "foo",
+	//		"auto.offset.reset":    "smallest"})
 
 	if err != nil {
 		panic(err)
