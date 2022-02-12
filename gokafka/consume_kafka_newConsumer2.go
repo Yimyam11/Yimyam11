@@ -16,8 +16,8 @@ func main(){
 func Consume() {
         c, err := kafka.NewConsumer(&kafka.ConfigMap{
             "bootstrap.servers": "localhost:9092",
-            "group.id":          "logs",
-        //    "auto.offset.reset" : "earliest"
+            "group.id":          "logs2",
+             "auto.offset.reset" : "earliest",
 //            "debug":"all",
         })
 
