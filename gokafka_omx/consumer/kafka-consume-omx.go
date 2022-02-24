@@ -3,7 +3,7 @@ package kafkaconsume
 import (
 	"fmt"
 
-	"gokafka_omx/consumer/config/config.go"
+	"consumer/config"
 
 	//"geofencing/logic/process"
 	//	"geofencing/models"
