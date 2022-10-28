@@ -1,4 +1,4 @@
-package formatomx 
+package formatomx
 
 type Omxkafka struct {
 	Order struct {
@@ -121,26 +121,27 @@ type Omxkafka struct {
 	OmxtrackingID string `json:"omxtrackingID"`
 }
 
-type 	ResourceIn        []struct {
-   	 
-		ResourceName     string `json:"resourceName,omitempty"`
-		ValuesArray      string `json:"valuesArray,omitempty"`
-		ResourceCategory string `json:"resourceCategory,omitempty"`
-	} 
-    
+type ResourceIn []struct {
+	ResourceName     string `json:"resourceName,omitempty"`
+	ValuesArray      string `json:"valuesArray,omitempty"`
+	ResourceCategory string `json:"resourceCategory,omitempty"`
+}
 
- type Resultlog struct {
-		SubmissionDate    	string `json:"submissionDate,omitempty"`
-		OmxtrackingID 		string `json:"omxtrackingID,omitempty"`
-		OrderType        	 int    `json:"orderType,omitempty"`
-		OrderDesc         	string   `json:"orderDesc,omitempty"`
-		Channel           	string `json:"channel,omitempty"`
-		ExtendedName	   string `json:"extendedName,omitempty"`
-		ExtendedValue	   string `json:"extendedValue,omitempty"`
-		Msisdn		string `json:"msisdn,omitempty"`
-		Imsi		string `json:"imsi,omitempty"`
-		Subcategory	 string `json:"subcategory,omitempty"`
-		Thidid		string `json:"thaiid,omitempty"`
-		OrderDetail	string `json:"orderDetail,omitempty"`		 
-	}	
- 
+type ResultlogDetail struct {
+	SubmissionDate string `json:"submissionDate,omitempty"`
+	OmxtrackingID  string `json:"omxtrackingID,omitempty"`
+	OrderType      int    `json:"orderType,omitempty"`
+	OrderDesc      string `json:"orderDesc,omitempty"`
+	Channel        string `json:"channel,omitempty"`
+	ExtendedName   string `json:"extendedName,omitempty"`
+	ExtendedValue  string `json:"extendedValue,omitempty"`
+	Msisdn         string `json:"msisdn,omitempty"`
+	Imsi           string `json:"imsi,omitempty"`
+	//	Subcategory	 string `json:"subcategory,omitempty"`
+	Thidid      string `json:"thaiid,omitempty"`
+	OrderDetail string `json:"orderDetail,omitempty"`
+}
+
+type Resultlog struct {
+	ResultlogDetail `json:"ResuletOMX"`
+}

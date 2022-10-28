@@ -1,0 +1,6 @@
+kafka broker production
+tykbpr01:9092,tykbpr02:9092,tykbpr03:9092
+tykbpr01 172.16.3.157 
+tykbpr02 172.16.3.158
+tykbpr03 172.16.3.159
+

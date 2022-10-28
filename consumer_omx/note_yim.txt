@@ -1,0 +1,36 @@
+##การสร้าง docker file โดยชื่อว่า##โดยจะอ่านจาก dockerfile 
+sudo docker build -t baseimage_omx .
+
+ 
+
+#-v moount source  code จาก $(pwd) แล้วไป compile /app  แล้วก็ไป config host ต่าง 
+sudo docker run -ti --rm -v $(pwd):/app --add-host tykbpr01:172.16.3.157 --add-host tykbpr02:172.16.3.158 --add-host tykbpr03:172.16.3.159 --add-host true.th:172.16.51.30  -e KRB5_CONFIG=config/krb5.conf baseimage_omx sh
+
+#sudo docker run -ti --rm -v $(pwd):/app --add-host tykbpr01:172.16.3.157 --add-host tykbpr02:172.16.3.158 --add-host tykbpr03:172.16.3.159 --add-host true.th:172.16.51.30   baseimage_omx sh
+
+#command run golang ###บอกว่าให้มันรันแบบมี dynamic 
+go run -tags dynamic kafka-consume-omx.go  
+ 
+
+
+ kinit -R -t "keytab/U-SVC-DMC.keytab" -k U-SVC-DMC@TRUE.TH || kinit -t "keytab/U-SVC-DMC.keytab" -k U-SVC-DMC@TRUE.TH
+
+
+git config --global --add http.proxy http://10.81.135.253:6443
+git config --global --add https.proxy http://10.81.135.253:6443
+export https_proxy=http://10.81.135.253:6443
+export http_proxy=http://10.81.135.253:6443
+
+
+sudo docker build -t baseimage  .
+sudo docker run -ti --rm -v $(pwd):/appyim --add-host tykbpr01:172.16.3.157 --add-host tykbpr02:172.16.3.158 --add-host tykbpr03:172.16.3.159 --add-host true.th:172.16.51.30  -e KRB5_CONFIG=config/krb5.conf baseimage sh
+
+
+
+------ ขั้นตอนการรัน & dev ไปด้วย
+1. sudo docker run -ti --rm -v $(pwd):/app --add-host tykbpr01:172.16.3.157 --add-host tykbpr02:172.16.3.158 --add-host tykbpr03:172.16.3.159 --add-host true.th:172.16.51.30  -e KRB5_CONFIG=config/krb5.conf baseimage_omx sh
+2. cd /app
+3. run code #command run golang ###บอกว่าให้มันรันแบบมี dynamic  ด้วย go run -tags dynamic kafka-consume-omx.go  
+
+
+

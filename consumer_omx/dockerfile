@@ -1,0 +1,8 @@
+FROM golang:alpine
+ENV https_proxy=http://10.81.135.253:6443
+ENV http_proxy=http://10.81.135.253:6443
+RUN apk add build-base librdkafka-dev pkgconf krb5 kafkacat
+RUN echo "" >> /etc/apk/repositories
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.8/main" >> /etc/apk/repositories
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.8/community" >> /etc/apk/repositories
+RUN apk add cyrus-sasl-gssapi
