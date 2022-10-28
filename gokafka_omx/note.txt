@@ -1,4 +1,0 @@
-    ทำกาผูก Consumer User : U-SVC-DMC
- Topic : PROD-json-MB-Postpaid-Aftersales-Online
-Topic : PROD-json-MB-Postpaid-Aftersales-Bulk
-Group ID : OMX_DMC
